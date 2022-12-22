@@ -8,7 +8,7 @@
 
 const middle = (array) => {
   // Skriv din kod här
-  
+  return array[Math.round((array.length - 1) / 2)]
 }
 
 const result1 = middle(["1", "2", "3", "4", "5"]) // "3"
