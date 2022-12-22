@@ -1,4 +1,4 @@
-import React from 'react'
+import {React, useState, useEffect} from 'react'
 
 // Den här komponenten har ett par stycken problem och
 // saknar några delar. Mer exakt: 5 stycken.
@@ -12,14 +12,17 @@ const Four = () => {
 
   const getData = async (url) => {
     const response = await fetch(url)
-    const data = response.json();
+    const data = await response.json();
+    setUser(data);
   }
 
   async function getUser() {
-    const user = getData("https://dummyjson.com/users/1")
-    setUser(user);
+    const user = await getData("https://dummyjson.com/users/1")
   }
-
+  
+  useEffect(() => {
+    getUser()
+  }, [])
 
   // Rör inte koden under denna kommentaren
   if (!user) {

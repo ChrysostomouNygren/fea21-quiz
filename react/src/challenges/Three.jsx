@@ -8,7 +8,7 @@ const Item = (props) => {
   }
 
   // Men detta går bra
-  <p data-testid="three-item">{number}</p>
+  return <p data-testid="three-item">{props.number}</p>
 }
 
 
@@ -17,14 +17,18 @@ const Item = (props) => {
 // Men se till att den filtrerar ut de som inte är nummer.
 // Item ska alltså inte skriva ut "Inte ett nummer"
 
-const Three = () => {
+const Three = (props) => {
 
-  const numericItems = []
-
+  const words = props.items.filter(item => item.length > 3)
+  const numericItems = props.items.filter(item => !words.includes(item))
   return (
     <div>
+      
+      
       {
-        numericItems.map()
+        numericItems.map((numb) =>{
+          return <Item number={numb}/>
+        })
       }
     </div>
   );
